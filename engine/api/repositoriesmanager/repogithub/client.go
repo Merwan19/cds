@@ -208,9 +208,8 @@ func (g *GithubClient) Branch(fullname, branch string) (sdk.VCSBranch, error) {
 	return sdk.VCSBranch{}, sdk.ErrNoBranch
 }
 
-// Commits returns the commits list on a branch between a commit SHA (since) until anotger commit SHA (until). The branch is given by the branch of the first commit SHA (since)
+// Commits returns the commits list on a branch between a commit SHA (since) until another commit SHA (until). The branch is given by the branch of the first commit SHA (since)
 func (g *GithubClient) Commits(repo, theBranch, since, until string) ([]sdk.VCSCommit, error) {
-	var theCommits []Commit
 	var commitsResult []sdk.VCSCommit
 
 	log.Debug("Looking for commits on repo %s since = %s until = %s", repo, since, until)
@@ -218,7 +217,23 @@ func (g *GithubClient) Commits(repo, theBranch, since, until string) ([]sdk.VCSC
 		return commitsResult, nil
 	}
 
+	// Get Since commit
+
+
+	// GEt Until Commit
+
+	//Get Commit List
+
 	theCommits, err := g.allCommitsForBranch(repo, theBranch)
+
+	commits, err := g.
+	/*
+	var theCommits []Commit
+
+
+
+
+
 	if err != nil {
 		return nil, err
 	}
@@ -251,6 +266,8 @@ func (g *GithubClient) Commits(repo, theBranch, since, until string) ([]sdk.VCSC
 
 	cache.SetWithTTL(cache.Key("reposmanager", "github", "commits", repo, "since="+since, "until="+until), commitsResult, 3*60*60)
 
+	return commitsResult, nil
+	*/
 	return commitsResult, nil
 }
 
